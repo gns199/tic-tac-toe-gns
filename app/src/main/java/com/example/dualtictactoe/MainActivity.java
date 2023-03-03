@@ -9,7 +9,7 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     public Button button1, button2, button3, button4, button5, button6, button7, button8, button9;
-
+    private int currentPlayer = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +30,106 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle the game logic for button1
+                if (button1.getText().toString().isEmpty()) {
+                    if (currentPlayer == 1) {
+                        button1.setText("X");
+                        currentPlayer = 2;
+                    } else {
+                        button1.setText("O");
+                        currentPlayer = 1;
+                    }
+                    checkForWin();
+                }
+            }
+        });
+        // Repeat this process for all other buttons in the layout
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (button2.getText().toString().isEmpty()) {
+                    if (currentPlayer == 1) {
+                        button2.setText("X");
+                        currentPlayer = 2;
+                    } else {
+                        button2.setText("O");
+                        currentPlayer = 1;
+                    }
+                    checkForWin();
+                }
             }
         });
 
-        // Repeat this process for all other buttons in the layout
+        button3.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (button3.getText().toString().isEmpty()) {
+                if (currentPlayer == 1) {
+                    button3.setText("X");
+                    currentPlayer = 2;
+                } else {
+                    button3.setText("O");
+                    currentPlayer = 1;
+                }
+                checkForWin();
+            }
+        }
+    });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (button4.getText().toString().isEmpty()) {
+                    if (currentPlayer == 1) {
+                        button4.setText("X");
+                        currentPlayer = 2;
+                    } else {
+                        button4.setText("O");
+                        currentPlayer = 1;
+                    }
+                    checkForWin();
+                }
+            }
+
+        });
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (button5.getText().toString().isEmpty()) {
+                    if (currentPlayer == 1) {
+                        button5.setText("X");
+                        currentPlayer = 2;
+                    } else {
+                        button5.setText("O");
+                        currentPlayer = 1;
+                    }
+                    checkForWin();
+                }
+            }
+
+        });
+
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (button5.getText().toString().isEmpty()) {
+                    if (currentPlayer == 1) {
+                        button5.setText("X");
+                        currentPlayer = 2;
+                    } else {
+                        button5.setText("O");
+                        currentPlayer = 1;
+                    }
+                    checkForWin();
+                }
+            }
+
+        });
+
+
+
+
+    }
+
+    private void checkForWin() {
+        // Implement your Tic Tac Toe win-checking logic here
     }
 }
