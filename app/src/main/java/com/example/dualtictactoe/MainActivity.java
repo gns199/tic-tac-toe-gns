@@ -107,6 +107,23 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (button5.getText().toString().isEmpty()) {
+                    if (currentPlayer == 1) {
+                        button5.setText("X");
+                        currentPlayer = 2;
+                    } else {
+                        button5.setText("O");
+                        currentPlayer = 1;
+                    }
+                    checkForWin();
+                }
+            }
+
+        });
+
 
 
 
