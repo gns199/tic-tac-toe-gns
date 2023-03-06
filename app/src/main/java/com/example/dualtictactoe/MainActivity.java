@@ -11,6 +11,11 @@ public class MainActivity extends AppCompatActivity {
 
     public Button button1, button2, button3, button4, button5, button6, button7, button8, button9;
     private int currentPlayer = 1;
+    private enum Player {
+        ONE, TWO
+    }
+    private TextView textViewPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -189,6 +194,114 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+    }
+    private boolean checkRowForWin(int row) {
+        Button button1 = findViewById(R.id.button1);
+        Button button2 = findViewById(R.id.button2);
+        Button button3 = findViewById(R.id.button3);
+        Button button4 = findViewById(R.id.button4);
+        Button button5 = findViewById(R.id.button5);
+        Button button6 = findViewById(R.id.button6);
+        Button button7 = findViewById(R.id.button7);
+        Button button8 = findViewById(R.id.button8);
+        Button button9 = findViewById(R.id.button9);
+
+        switch (row) {
+            case 0:
+                return button1.getText().equals(button2.getText()) &&
+                        button2.getText().equals(button3.getText()) &&
+                        !button1.getText().toString().isEmpty();
+            case 1:
+                return button4.getText().equals(button5.getText()) &&
+                        button5.getText().equals(button6.getText()) &&
+                        !button4.getText().toString().isEmpty();
+            case 2:
+                return button7.getText().equals(button8.getText()) &&
+                        button8.getText().equals(button9.getText()) &&
+                        !button7.getText().toString().isEmpty();
+            default:
+                return false;
+        }
+    }
+
+    private boolean checkColumnForWin(int column) {
+        Button button1 = findViewById(R.id.button1);
+        Button button2 = findViewById(R.id.button2);
+        Button button3 = findViewById(R.id.button3);
+        Button button4 = findViewById(R.id.button4);
+        Button button5 = findViewById(R.id.button5);
+        Button button6 = findViewById(R.id.button6);
+        Button button7 = findViewById(R.id.button7);
+        Button button8 = findViewById(R.id.button8);
+        Button button9 = findViewById(R.id.button9);
+
+        switch (column) {
+            case 0:
+                return button1.getText().equals(button4.getText()) &&
+                        button4.getText().equals(button7.getText()) &&
+                        !button1.getText().toString().isEmpty();
+            case 1:
+                return button2.getText().equals(button5.getText()) &&
+                        button5.getText().equals(button8.getText()) &&
+                        !button2.getText().toString().isEmpty();
+            case 2:
+                return button3.getText().equals(button6.getText()) &&
+                        button6.getText().equals(button9.getText()) &&
+                        !button3.getText().toString().isEmpty();
+            default:
+                return false;
+        }
+    }
+    private boolean checkDiagonalForWin() {
+        Button button1 = findViewById(R.id.button1);
+        Button button5 = findViewById(R.id.button5);
+        Button button9 = findViewById(R.id.button9);
+        Button button3 = findViewById(R.id.button3);
+        Button button7 = findViewById(R.id.button7);
+
+        // Check diagonal from top left to bottom right
+        if (button1.getText().equals(button5.getText()) &&
+                button5.getText().equals(button9.getText()) &&
+                !button1.getText().toString().isEmpty()) {
+            return true;
+        }
+
+        // Check diagonal from top right to bottom left
+        if (button3.getText().equals(button5.getText()) &&
+                button5.getText().equals(button7.getText()) &&
+                !button3.getText().toString().isEmpty()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void resetGame() {
+        Button button1 = findViewById(R.id.button1);
+        Button button2 = findViewById(R.id.button2);
+        Button button3 = findViewById(R.id.button3);
+        Button button4 = findViewById(R.id.button4);
+        Button button5 = findViewById(R.id.button5);
+        Button button6 = findViewById(R.id.button6);
+        Button button7 = findViewById(R.id.button7);
+        Button button8 = findViewById(R.id.button8);
+        Button button9 = findViewById(R.id.button9);
+
+        // Clear the text of all buttons
+        button1.setText("");
+        button2.setText("");
+        button3.setText("");
+        button4.setText("");
+        button5.setText("");
+        button6.setText("");
+        button7.setText("");
+        button8.setText("");
+        button9.setText("");
+
+        // Reset the game state
+        currentPlayer = Player.ONE;
+        boolean gameEnded = false;
+        textViewPlayer.setText(R.string.player_one_turn);
     }
 
     private void checkForWin() {
