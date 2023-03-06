@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -123,13 +124,111 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (button6.getText().toString().isEmpty()) {
+                    if (currentPlayer == 1) {
+                        button6.setText("X");
+                        currentPlayer = 2;
+                    } else {
+                        button6.setText("O");
+                        currentPlayer = 1;
+                    }
+                    checkForWin();
+                }
+            }
 
+        });
 
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (button7.getText().toString().isEmpty()) {
+                    if (currentPlayer == 1) {
+                        button7.setText("X");
+                        currentPlayer = 2;
+                    } else {
+                        button7.setText("O");
+                        currentPlayer = 1;
+                    }
+                    checkForWin();
+                }
+            }
 
+        });
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (button8.getText().toString().isEmpty()) {
+                    if (currentPlayer == 1) {
+                        button8.setText("X");
+                        currentPlayer = 2;
+                    } else {
+                        button8.setText("O");
+                        currentPlayer = 1;
+                    }
+                    checkForWin();
+                }
+            }
 
+        });
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (button9.getText().toString().isEmpty()) {
+                    if (currentPlayer == 1) {
+                        button9.setText("X");
+                        currentPlayer = 2;
+                    } else {
+                        button9.setText("O");
+                        currentPlayer = 1;
+                    }
+                    checkForWin();
+                }
+            }
+
+        });
     }
 
     private void checkForWin() {
-        // Implement your Tic Tac Toe win-checking logic here
+        // Check rows for a win
+        if (checkRowForWin(0) || checkRowForWin(1) || checkRowForWin(2)) {
+            // We have a winner!
+            Toast.makeText(this, "Player " + currentPlayer + " wins!", Toast.LENGTH_SHORT).show();
+            resetGame();
+            return;
+        }
+
+        // Check columns for a win
+        if (checkColumnForWin(0) || checkColumnForWin(1) || checkColumnForWin(2)) {
+            // We have a winner!
+            Toast.makeText(this, "Player " + currentPlayer + " wins!", Toast.LENGTH_SHORT).show();
+            resetGame();
+            return;
+        }
+
+        // Check diagonals for a win
+        if (checkDiagonalForWin(0, 0, 1, 1, 2, 2) || checkDiagonalForWin(0, 2, 1, 1, 2, 0)) {
+            // We have a winner!
+            Toast.makeText(this, "Player " + currentPlayer + " wins!", Toast.LENGTH_SHORT).show();
+            resetGame();
+            return;
+        }
+
+        // If no one has won and all buttons are filled, it's a tie
+        if (!button1.getText().toString().isEmpty() &&
+                !button2.getText().toString().isEmpty() &&
+                !button3.getText().toString().isEmpty() &&
+                !button4.getText().toString().isEmpty() &&
+                !button5.getText().toString().isEmpty() &&
+                !button6.getText().toString().isEmpty() &&
+                !button7.getText().toString().isEmpty() &&
+                !button8.getText().toString().isEmpty() &&
+                !button9.getText().toString().isEmpty()) {
+            Toast.makeText(this, "It's a tie!", Toast.LENGTH_SHORT).show();
+            resetGame();
+        }
     }
+
 }
