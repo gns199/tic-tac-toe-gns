@@ -1,10 +1,13 @@
 package com.example.dualtictactoe;
+import com.example.tictactoe.Player;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.widget.Button;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -299,6 +302,8 @@ public class MainActivity extends AppCompatActivity {
         button9.setText("");
 
         // Reset the game state
+        Player currentPlayer = new Player(Player.ONE);
+
         currentPlayer = Player.ONE;
         boolean gameEnded = false;
         textViewPlayer.setText(R.string.player_one_turn);
